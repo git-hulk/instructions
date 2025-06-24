@@ -1,0 +1,10 @@
+- Use only spaces for indentation; indent 2 spaces at a time. Do not use tabs.
+- Each line should be at most 80 characters long, except for certain cases (e.g., long URLs, include statements).
+- Function declarations: return type on the same line as the function name if possible; wrap parameters as needed, indenting wrapped lines by 4 spaces.
+- Function calls: arguments may be on the same line or wrapped and aligned; use a 4 space indent for wrapped arguments.
+- Braced initializer lists are formatted like function calls.
+- Place the opening curly brace at the end of the function declaration line; closing brace on its own line or with the opening brace if short.
+- Use spaces around assignment and most binary operators; no spaces around period or arrow for member access.
+- Minimize vertical whitespace; do not use more than one or two blank lines between functions.
+- Do not introduce trailing whitespace; remove it if editing a line.
+- Do not indent within namespaces; namespace contents are not indented.

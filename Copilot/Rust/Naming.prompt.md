@@ -1,0 +1,7 @@
+- Use `snake_case` for function, variable, and module names.
+- Use `UpperCamelCase` for type and trait names.
+- Use `SCREAMING_SNAKE_CASE` for constants and statics.
+- Prefer descriptive names; avoid abbreviations unless they are well known.
+- Use a leading underscore for unused variables or parameters.
+- For generic type parameters, use single uppercase letters (e.g., `T`, `U`, `E`).
+- For lifetimes, use short, lowercase names prefixed with a single quote (e.g., `'a`).

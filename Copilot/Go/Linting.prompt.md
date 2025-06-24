@@ -1,0 +1,3 @@
+- Use `golangci-lint` with recommended linters: `errcheck`, `goimports`, `golint`, `govet`, `staticcheck`.
+- Lint consistently across the codebase.
+- Example configuration: see `.golangci.yml` in the Uber Go guide repo.

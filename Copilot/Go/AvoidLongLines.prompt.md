@@ -1,0 +1,1 @@
+- Keep lines under 99 characters for readability. Wrapping is recommended but not strictly enforced.

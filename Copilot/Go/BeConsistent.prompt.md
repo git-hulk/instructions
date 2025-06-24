@@ -1,0 +1,1 @@
+- Apply conventions consistently across the codebase. Consistency improves maintainability and reduces bugs.

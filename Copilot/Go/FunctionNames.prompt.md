@@ -1,0 +1,2 @@
+- Use `MixedCaps` for function names. Test functions may use underscores for grouping.
+- Example: `func CalculateSum()`; `func TestMyFunction_WhatIsBeingTested()`.

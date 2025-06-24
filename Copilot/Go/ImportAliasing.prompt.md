@@ -1,0 +1,2 @@
+- Use import aliases only when necessary (e.g., name conflicts).
+- Example: `import nettrace "golang.net/x/trace"`.

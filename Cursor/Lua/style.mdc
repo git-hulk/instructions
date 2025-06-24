@@ -1,0 +1,104 @@
+# Cursor Lua Style Rules
+
+## Indentation
+- Use 2 spaces for indentation, not tabs.
+- Example:
+  ```lua
+  if a then
+    ngx.say("hello")
+  end
+  ```
+
+## Blank Lines
+- Do not use semicolons at the end of lines.
+- Do not compress multiple statements into one line; use one statement per line.
+- Separate functions with two blank lines.
+- Separate `if`/`elseif` branches with a blank line.
+
+## Max Line Length
+- Limit each line to 80 characters. If exceeded, wrap and align for readability.
+- When breaking function calls, align parameters under the opening parenthesis.
+- For string concatenation, place `..` at the start of the new line.
+
+## Space
+- Add a space on both sides of operators.
+- Example:
+  ```lua
+  local i = 1
+  local s = "apisix"
+  ```
+
+## Variable Naming
+- Always use local variables, not globals.
+- Use `snake_case` for variable names.
+- Use ALL_CAPS for constants.
+- Example:
+  ```lua
+  local i = 1
+  local index_arr = 1
+  local MAX_INT = 65535
+  ```
+
+## Table Usage
+- Use `table.new` to pre-allocate tables when possible.
+- Do not use `nil` in arrays; use `ngx.null` for null values.
+- Example:
+  ```lua
+  local new_tab = require "table.new"
+  local t = new_tab(100, 0)
+  for i = 1, 100 do
+    t[i] = i
+  end
+  local t = {1, 2, ngx.null, 3}
+  ```
+
+## Module Usage
+- Localize all required libraries and `ngx`.
+- Example:
+  ```lua
+  local ngx = ngx
+  local require = require
+  local core = require("apisix.core")
+  local timer_at = ngx.timer.at
+  local function foo()
+    local ok, err = timer_at(delay, handler)
+  end
+  ```
+
+## String Handling
+- Do not concatenate strings in a loop on hot code paths.
+- Use a table to collect strings, then concatenate with `table.concat`.
+- Example:
+  ```lua
+  local t = {}
+  for i = 1, 100000 do
+    t[i] = "a"
+  end
+  local s = table.concat(t, "")
+  ```
+
+## Function Naming and Structure
+- Use `snake_case` for function names.
+- Return as early as possible in functions.
+- Example:
+  ```lua
+  local function test_nginx() end
+  local function check(age, name)
+    if age < 20 then
+      return false
+    end
+    return name == "a"
+  end
+  ```
+
+## Error Handling
+- Always check and handle errors from functions that return error information.
+- When writing your own functions, return error messages as the second return value (a string).
+- Example:
+  ```lua
+  local ok, err = func()
+  if not ok then
+    return false, "failed to call func(): " .. err
+  end
+  ```
+

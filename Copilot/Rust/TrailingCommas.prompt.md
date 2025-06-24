@@ -1,0 +1,3 @@
+- In comma-separated lists, use a trailing comma when the list is followed by a newline.
+- This applies to function calls, array and struct initializations, and similar constructs.
+- Trailing commas make adding, removing, or reordering items easier and reduce diff noise.

@@ -1,0 +1,3 @@
+- Use compile-time checks to verify that types implement interfaces.
+  - Example: `var _ http.Handler = (*Handler)(nil)`
+  - For value receivers: `var _ http.Handler = LogHandler{}`

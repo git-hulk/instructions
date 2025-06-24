@@ -1,0 +1,56 @@
+# Cursor C++ Style Rules
+
+## Formatting
+- Use only spaces for indentation; indent 2 spaces at a time. Do not use tabs.
+- Each line should be at most 80 characters long, except for certain cases (e.g., long URLs, include statements).
+- Function declarations: return type on the same line as the function name if possible; wrap parameters as needed, indenting wrapped lines by 4 spaces.
+- Function calls: arguments may be on the same line or wrapped and aligned; use a 4 space indent for wrapped arguments.
+- Braced initializer lists are formatted like function calls.
+- Place the opening curly brace at the end of the function declaration line; closing brace on its own line or with the opening brace if short.
+- Use spaces around assignment and most binary operators; no spaces around period or arrow for member access.
+- Minimize vertical whitespace; do not use more than one or two blank lines between functions.
+- Do not introduce trailing whitespace; remove it if editing a line.
+- Do not indent within namespaces; namespace contents are not indented.
+
+## Header Files
+- Header files should be self-contained and end in .h. Use .inc only for non-header files meant for inclusion at specific points.
+- All header files must have #define guards in the format <PROJECT>_<PATH>_<FILE>_H_.
+- Include what you use: if a file refers to a symbol, it must directly include the header that provides it.
+- Avoid forward declarations; prefer including the needed headers.
+- Only define short functions inline in headers; longer functions should be in .cc files unless required for templates or performance.
+- Include headers in this order: related header, C system headers, C++ standard library headers, other libraries' headers, your project's headers. Separate groups with a blank line and order alphabetically within each group.
+
+## Naming
+- Use descriptive names that make intent clear to new readers, even those outside your team.
+- Filenames: all lowercase, use underscores or dashes, and be specific (e.g., my_class.cc, my_class.h).
+- Type names (classes, structs, enums, type aliases, concepts): use UpperCamelCase (e.g., MyClass, MyEnum).
+- Variable names (including function parameters): use snake_case (e.g., my_variable). Class data members have a trailing underscore (e.g., value_); struct members do not.
+- Constant names: use a leading 'k' and UpperCamelCase (e.g., kMaxValue).
+- Function names: use UpperCamelCase (e.g., AddEntry). Accessors/mutators may be named like variables.
+- Namespace names: use snake_case.
+- Enumerator names: use constant-style naming (e.g., kEnumValue).
+- Macro names: use ALL_CAPS with a project-specific prefix (e.g., MYPROJECT_MACRO_NAME).
+- Template parameters: type parameters use UpperCamelCase; non-type parameters use variable/constant rules.
+- Avoid abbreviations unless widely known; do not delete letters within words.
+
+## Comments
+- Use // for comments; /* ... */ is allowed but less common. Be consistent within a file.
+- Every file should start with license boilerplate.
+- File-level comments should describe the purpose and contents of the file.
+- Every non-obvious class or struct should have a comment describing its purpose and usage.
+- Almost every function declaration should have a comment describing what it does and how to use it. Focus on inputs, outputs, and ownership/lifetime of arguments.
+- Comment tricky or non-obvious code blocks to explain why, not just what, the code does.
+- Use complete sentences, proper punctuation, and correct grammar in comments.
+- Use TODO comments for temporary or incomplete code, including an identifier (e.g., TODO(username): ...).
+- Do not state the obvious; prefer self-documenting code.
+
+## Classes
+- Use struct only for passive objects that carry data; otherwise, use class.
+- All data members of classes should be private (except constants); struct members are public.
+- Group class sections in public, protected, private order, each indented one space. Omit empty sections.
+- Start class definition with public section, followed by protected, then private.
+- Group similar declarations together within each section, following this order: types/type aliases, (optionally for structs) non-static data members, static constants, factory functions, constructors/assignment operators, destructor, other functions, other data members.
+- Do not put large method definitions inline in the class; only trivial or performance-critical short methods may be inline.
+- Explicitly declare or delete copy/move operations in the public section as appropriate.
+- Use public inheritance when needed; prefer composition over inheritance when possible.
+- Annotate overrides of virtual functions/destructors with override or final; do not use virtual for overrides.

@@ -1,0 +1,143 @@
+# Cursor Go Style Rules
+
+## Package Naming
+- Use short, lowercase, singular package names. Avoid `util`, `common`, or `shared`.
+- Example: `package logger`.
+
+## Consistency
+- Apply conventions consistently across the codebase. Consistency improves maintainability and reduces bugs.
+
+## Function Grouping and Ordering
+- Group functions by receiver and order them by call hierarchy. Exported functions should appear first after type/const/var definitions.
+- Example:
+  ```go
+  type something struct{ ... }
+  func newSomething() *something { return &something{} }
+  func (s *something) Cost() { return calcCost(s.weights) }
+  func (s *something) Stop() { ... }
+  func calcCost(n []int) int { ... }
+  ```
+
+## Reduce Nesting
+- Return early to reduce code nesting. Handle error/special cases first.
+- Example:
+  ```go
+  for _, v := range data {
+    if v.F1 != 1 { log.Printf("Invalid v: %v", v); continue }
+    v = process(v)
+    if err := v.Call(); err != nil { return err }
+    v.Send()
+  }
+  ```
+
+## Unnecessary Else
+- Remove unnecessary `else` blocks when the `if` branch returns or exits.
+- Example:
+  ```go
+  a := 10
+  if b { a = 100 }
+  ```
+
+## Linting
+- Use `golangci-lint` with recommended linters: `errcheck`, `goimports`, `golint`, `govet`, `staticcheck`.
+- Lint consistently across the codebase.
+- Example configuration: see `.golangci.yml` in the Uber Go guide repo.
+
+## Import Aliasing
+- Use import aliases only when necessary (e.g., name conflicts).
+- Example: `import nettrace "golang.net/x/trace"`.
+
+## Local Variables
+- Use `:=` for local variables with explicit values. Use `var` for zero values or empty slices.
+- Example:
+  ```go
+  s := "foo"
+  var filtered []int
+  ```
+
+## Avoid Naked Parameters
+- Use comments or custom types for function parameters when their meaning is not obvious. Prefer custom types for booleans or enums.
+- Example:
+  ```go
+  printInfo("foo", true /* isLocal */, true /* done */)
+  ```
+
+## Copy Slices and Maps
+- Copy slices and maps when receiving or returning them to avoid unintended sharing.
+  - Example for receiving:
+    ```go
+    func (d *Driver) SetTrips(trips []Trip) {
+      d.trips = make([]Trip, len(trips))
+      copy(d.trips, trips)
+    }
+    ```
+  - Example for returning:
+    ```go
+    func (s *Stats) Snapshot() map[string]int {
+      s.mu.Lock()
+      defer s.mu.Unlock()
+      result := make(map[string]int, len(s.counters))
+      for k, v := range s.counters { result[k] = v }
+      return result
+    }
+    ```
+
+## Prefix Unexported Globals
+- Prefix unexported top-level variables and constants with `_` (except errors).
+- Example:
+  ```go
+  const (
+    _defaultPort = 8080
+    _defaultUser = "user"
+  )
+  ```
+
+## Avoid init()
+- Avoid `init()` functions. Prefer explicit initialization in `main()` or constructors.
+- If unavoidable, ensure `init()` is deterministic, does not depend on global state, and avoids I/O.
+- Example:
+  ```go
+  var _defaultFoo = defaultFoo()
+  func defaultFoo() Foo { return Foo{ /* ... */ } }
+  ```
+
+## Embedding in Structs
+- Place embedded types at the top of the struct, separated by an empty line. Only embed when it provides clear benefit.
+- Do not embed mutexes. Do not embed types that expose implementation details or break zero-value usefulness.
+- Example:
+  ```go
+  type Client struct {
+    http.Client
+    version int
+  }
+  ```
+
+## Initializing Maps
+- Use `make()` for empty or programmatically populated maps. Use literals for fixed elements. Provide capacity hints if possible.
+- Example:
+  ```go
+  m := make(map[string]int, 10)
+  m := map[string]int{ "foo": 1, "bar": 2 }
+  ```
+
+## Raw String Literals
+- Use raw string literals (backticks) to avoid manual escaping.
+- Example:
+  ```go
+  wantError := `unknown error:"test"`
+  ```
+
+## Verify Interface Compliance
+- Use compile-time checks to verify that types implement interfaces.
+  - Example: `var _ http.Handler = (*Handler)(nil)`
+  - For value receivers: `var _ http.Handler = LogHandler{}`
+
+## Error Handling
+- Always check and handle errors from functions that return error information.
+- When writing your own functions, return error messages as the second return value (a string).
+
+## Variable Naming
+- Always use local variables, not globals.
+- Use `snake_case` for variable names.
+- Use ALL_CAPS for constants.
+

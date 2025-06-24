@@ -1,0 +1,5 @@
+- Place each attribute on its own line, indented to the level of the item it applies to.
+- Prefer outer attributes (`#[]`) over inner attributes (`#![]`), except for module- or crate-level documentation.
+- For attributes with argument lists, format like functions, splitting across lines if needed.
+- For attributes with an equal sign, put a single space before and after the `=` (e.g., `#[foo = 42]`).
+- Combine multiple `derive` attributes into a single attribute, preserving the order of derived names (e.g., `#[derive(Foo, Bar)]`).

@@ -1,0 +1,2 @@
+- For small items (such as struct literals or short expressions), single-line formatting is allowed if the item is simple and short.
+- Tools may use heuristics such as item length or complexity to determine what is considered "small."

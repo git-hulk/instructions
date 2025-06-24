@@ -1,0 +1,2 @@
+- Use short, lowercase, singular package names. Avoid `util`, `common`, or `shared`.
+- Example: `package logger`.

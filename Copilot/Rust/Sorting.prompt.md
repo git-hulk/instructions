@@ -1,0 +1,4 @@
+- Sort items using version-sorting where specified (e.g., imports, fields, etc.).
+- Version-sorting compares numeric chunks by value and non-numeric chunks lexicographically, with underscores sorting after spaces but before other characters.
+- For identifiers, non-lowercase characters sort before lowercase characters.
+- When two strings are equal except for leading zeroes in numeric chunks, the one with more leading zeroes comes first.

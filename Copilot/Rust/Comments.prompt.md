@@ -1,0 +1,7 @@
+- Prefer line comments (`//`) to block comments (`/* ... */`).
+- Put a single space after the opening comment sigil.
+- Prefer to put comments on their own line. If a comment follows code, put a single space before it.
+- Comments should usually be complete sentences, starting with a capital letter and ending with a period.
+- Limit comment lines to 80 characters, or the maximum line width including indentation, whichever is smaller.
+- Prefer doc comments (`///`) for documentation. Use outer doc comments (`///` or `/** ... */`) for items, and inner doc comments (`//!` or `/*! ... */`) only for module- or crate-level documentation.
+- Place doc comments before attributes.

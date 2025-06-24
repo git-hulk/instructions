@@ -1,0 +1,57 @@
+# Cursor Rust Style Rules
+
+## Formatting
+- Use spaces, not tabs, for indentation. Each indentation level must be 4 spaces.
+- The maximum line width is 100 characters.
+- Prefer block indent over visual indent for function calls and similar constructs.
+- Use trailing commas in comma-separated lists when followed by a newline.
+- Separate items and statements by zero or one blank line (one or two newlines).
+- Sort items using version-sorting where specified.
+- Use rustfmt with default settings to ensure community-consistent formatting.
+- For small items (e.g., struct literals), single-line formatting is allowed if the item is simple and short.
+- Limit source lines that are entirely comments to 80 characters, or the maximum line width including indentation, whichever is smaller.
+
+## Naming
+- Use `snake_case` for function, variable, and module names.
+- Use `UpperCamelCase` for type and trait names.
+- Use `SCREAMING_SNAKE_CASE` for constants and statics.
+- Prefer descriptive names; avoid abbreviations unless they are well known.
+- Use a leading underscore for unused variables or parameters.
+- For generic type parameters, use single uppercase letters (e.g., `T`, `U`, `E`).
+- For lifetimes, use short, lowercase names prefixed with a single quote (e.g., `'a`).
+
+## Comments
+- Prefer line comments (`//`) to block comments (`/* ... */`).
+- Put a single space after the opening comment sigil.
+- Prefer to put comments on their own line. If a comment follows code, put a single space before it.
+- Comments should usually be complete sentences, starting with a capital letter and ending with a period.
+- Limit comment lines to 80 characters, or the maximum line width including indentation, whichever is smaller.
+- Prefer doc comments (`///`) for documentation. Use outer doc comments (`///` or `/** ... */`) for items, and inner doc comments (`//!` or `/*! ... */`) only for module- or crate-level documentation.
+- Place doc comments before attributes.
+
+## Attributes
+- Place each attribute on its own line, indented to the level of the item it applies to.
+- Prefer outer attributes (`#[]`) over inner attributes (`#![]`), except for module- or crate-level documentation.
+- For attributes with argument lists, format like functions, splitting across lines if needed.
+- For attributes with an equal sign, put a single space before and after the `=` (e.g., `#[foo = 42]`).
+- Combine multiple `derive` attributes into a single attribute, preserving the order of derived names (e.g., `#[derive(Foo, Bar)]`).
+
+## Blank Lines
+- Separate items and statements by zero or one blank line (i.e., one or two newlines).
+- Use blank lines to group related code for readability, but avoid excessive vertical whitespace.
+- Do not insert more than one consecutive blank line between items or statements.
+
+## Trailing Commas
+- In comma-separated lists, use a trailing comma when the list is followed by a newline.
+- This applies to function calls, array and struct initializations, and similar constructs.
+- Trailing commas make adding, removing, or reordering items easier and reduce diff noise.
+
+## Sorting
+- Sort items using version-sorting where specified (e.g., imports, fields, etc.).
+- Version-sorting compares numeric chunks by value and non-numeric chunks lexicographically, with underscores sorting after spaces but before other characters.
+- For identifiers, non-lowercase characters sort before lowercase characters.
+- When two strings are equal except for leading zeroes in numeric chunks, the one with more leading zeroes comes first.
+
+## Small Items
+- For small items (such as struct literals or short expressions), single-line formatting is allowed if the item is simple and short.
+- Tools may use heuristics such as item length or complexity to determine what is considered "small."

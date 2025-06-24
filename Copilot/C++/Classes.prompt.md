@@ -1,0 +1,9 @@
+- Use struct only for passive objects that carry data; otherwise, use class.
+- All data members of classes should be private (except constants); struct members are public.
+- Group class sections in public, protected, private order, each indented one space. Omit empty sections.
+- Start class definition with public section, followed by protected, then private.
+- Group similar declarations together within each section, following this order: types/type aliases, (optionally for structs) non-static data members, static constants, factory functions, constructors/assignment operators, destructor, other functions, other data members.
+- Do not put large method definitions inline in the class; only trivial or performance-critical short methods may be inline.
+- Explicitly declare or delete copy/move operations in the public section as appropriate.
+- Use public inheritance when needed; prefer composition over inheritance when possible.
+- Annotate overrides of virtual functions/destructors with override or final; do not use virtual for overrides.

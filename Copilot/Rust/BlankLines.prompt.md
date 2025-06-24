@@ -1,0 +1,3 @@
+- Separate items and statements by zero or one blank line (i.e., one or two newlines).
+- Use blank lines to group related code for readability, but avoid excessive vertical whitespace.
+- Do not insert more than one consecutive blank line between items or statements.

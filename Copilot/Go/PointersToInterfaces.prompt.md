@@ -1,0 +1,2 @@
+- Do not use pointers to interfaces. Always pass interfaces as values.
+- Example: Use `func Process(r io.Reader)` not `func Process(r *io.Reader)`.

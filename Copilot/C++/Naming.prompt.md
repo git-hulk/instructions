@@ -1,0 +1,11 @@
+- Use descriptive names that make intent clear to new readers, even those outside your team.
+- Filenames: all lowercase, use underscores or dashes, and be specific (e.g., my_class.cc, my_class.h).
+- Type names (classes, structs, enums, type aliases, concepts): use UpperCamelCase (e.g., MyClass, MyEnum).
+- Variable names (including function parameters): use snake_case (e.g., my_variable). Class data members have a trailing underscore (e.g., value_); struct members do not.
+- Constant names: use a leading 'k' and UpperCamelCase (e.g., kMaxValue).
+- Function names: use UpperCamelCase (e.g., AddEntry). Accessors/mutators may be named like variables.
+- Namespace names: use snake_case.
+- Enumerator names: use constant-style naming (e.g., kEnumValue).
+- Macro names: use ALL_CAPS with a project-specific prefix (e.g., MYPROJECT_MACRO_NAME).
+- Template parameters: type parameters use UpperCamelCase; non-type parameters use variable/constant rules.
+- Avoid abbreviations unless widely known; do not delete letters within words.

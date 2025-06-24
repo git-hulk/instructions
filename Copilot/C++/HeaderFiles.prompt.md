@@ -1,0 +1,6 @@
+- Header files should be self-contained and end in .h. Use .inc only for non-header files meant for inclusion at specific points.
+- All header files must have #define guards in the format <PROJECT>_<PATH>_<FILE>_H_.
+- Include what you use: if a file refers to a symbol, it must directly include the header that provides it.
+- Avoid forward declarations; prefer including the needed headers.
+- Only define short functions inline in headers; longer functions should be in .cc files unless required for templates or performance.
+- Include headers in this order: related header, C system headers, C++ standard library headers, other libraries' headers, your project's headers. Separate groups with a blank line and order alphabetically within each group.

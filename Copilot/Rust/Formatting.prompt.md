@@ -1,0 +1,10 @@
+- Use spaces, not tabs, for indentation.
+- Each indentation level must be 4 spaces.
+- The maximum line width is 100 characters.
+- Prefer block indent over visual indent for function calls and similar constructs.
+- Use trailing commas in comma-separated lists when followed by a newline.
+- Separate items and statements by zero or one blank line (one or two newlines).
+- Sort items using version-sorting where specified.
+- Use rustfmt with default settings to ensure community-consistent formatting.
+- For small items (e.g., struct literals), single-line formatting is allowed if the item is simple and short.
+- Limit source lines that are entirely comments to 80 characters, or the maximum line width including indentation, whichever is smaller.
